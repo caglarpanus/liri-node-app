@@ -29,8 +29,8 @@ function theSpotify(){
     var song = (data.tracks.items[0]);
     var artists = song.artists;
     if (artists){
-        artists.forEach(function (element) {
-            console.log("Artist: " + element.name);
+        artists.forEach(function (response) {
+            console.log("Artist: " + response.name);
         });
     };
     console.log("Track Name: " + song.name);
