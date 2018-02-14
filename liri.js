@@ -37,6 +37,7 @@ function theSpotify(){
     console.log("Preview Link: " + song.external_urls.spotify);
     console.log("Album: " + song.album.name);
     console.log("________________\n");
+    log(JSON.stringify(song));
   });
 
 };
@@ -54,6 +55,7 @@ function tweets(){
             console.log(theTweets.created_at);
             console.log(theTweets.text);
             console.log("_______________\n");
+            log(tweets[i].text);
           };
         };
     });
@@ -67,6 +69,7 @@ function omdb() {
           console.log("Title: " + (movie.Title)); 
           console.log("Year: " + (movie.Year)); 
           console.log("IMDB Rating: " + (movie.imdbRating + "/10"));
+          log(JSON.stringify(movie));
           if (movie.Ratings[1]){
               console.log("Rotten Tomatoes Rating: " + movie.Ratings[1].Value); 
           }
@@ -97,6 +100,12 @@ function fsPackage(){
       run();
   });
 };
+//Outputs the data to log.txt file.
+function log(response){
+    fs.appendFile("log.txt",response, function(err){
+        console.log(err || 'Content Added!');
+    });
+}
 //liri.js can take in one of the following commands.
 function run(){
   switch (command){
